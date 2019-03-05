@@ -15,3 +15,42 @@
 // For each item, calculate the percentage of times it was chosen using the two counters.
 
 // Put results into a string for each item. Append these strings to HTML.
+
+'use strict';
+
+var productPic = document.getElementById('productpic');
+var allProducts = [];
+
+function Products(name, src, alt, title) {
+  this.filepath = `img/${name}.jpg`;
+  this.name = name;
+  this.views = 0;
+  allProducts.push(this);
+}
+
+new Products('bag', 'bag.jpg', 'R2D2 suitcase', 'R2D2 suitcase');
+new Products('banana', 'banana.jpg', 'banana', 'banana');
+new Products('bathroom', 'bathroom.jpg', 'bathroom', 'bathroom');
+new Products('boots', 'boots.jpg', 'boots', 'boots');
+new Products('breakfast', 'breakfast.jpg', 'breatfast', 'breakfast');
+
+
+function showRandomProducts() {
+  var random = Math.floor(Math.random() * allProducts.length);
+  console.log(random);
+  productPic.src = allProducts[random].filepath;
+  productPic.alt = allProducts[random].name;
+  productPic.title = allProducts[random].name;
+  allProducts[random].views++;
+  console.log('current product, ', allProducts[random]);
+}
+
+showRandomProducts();
+
+productPic.addEventListener('click', handleClick);
+function handleClick(event) {
+  console.log('target, ', event.target);
+  showRandomProducts();
+}
+
+console.log(allProducts);
