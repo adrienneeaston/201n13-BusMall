@@ -22,7 +22,7 @@ var productPic = document.getElementById('productpic');
 var allProducts = [];
 
 function Products(name, src, alt, title) {
-  this.filepath = `img/${name}`;
+  this.filepath = `img/${name}.jpg`;
   this.name = name;
   this.views = 0;
   allProducts.push(this);
@@ -37,6 +37,7 @@ new Products('breakfast', 'breakfast.jpg', 'breatfast', 'breakfast');
 
 function showRandomProducts() {
   var random = Math.floor(Math.random() * allProducts.length);
+  console.log(random);
   productPic.src = allProducts[random].filepath;
   productPic.alt = allProducts[random].name;
   productPic.title = allProducts[random].name;
