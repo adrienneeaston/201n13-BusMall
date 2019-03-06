@@ -23,6 +23,8 @@ var productPicTwo = document.getElementById('productpic2');
 var productPicThree = document.getElementById('productpic3');
 var allProducts = [];
 
+// creates constructor
+
 function Products(name, src, alt, title) {
   this.filepath = `img/${name}.jpg`;
   this.name = name;
@@ -30,12 +32,15 @@ function Products(name, src, alt, title) {
   allProducts.push(this);
 }
 
+// create's objects
+
 new Products('bag', 'bag.jpg', 'R2D2 suitcase', 'R2D2 suitcase');
 new Products('banana', 'banana.jpg', 'banana', 'banana');
 new Products('bathroom', 'bathroom.jpg', 'bathroom', 'bathroom');
 new Products('boots', 'boots.jpg', 'boots', 'boots');
 new Products('breakfast', 'breakfast.jpg', 'breatfast', 'breakfast');
 
+// choosesa nd displays products
 
 function showRandomProducts() {
   for(var i = 0; i < 3; i++) {
@@ -53,15 +58,16 @@ function showRandomProducts() {
     productPic.title = allProducts[random].name;
     allProducts[random].views++;
     console.log('current product, ', allProducts[random]);
+    console.log('-----------');
+    console.log(allProducts[0].views);
+    productPic.addEventListener('click', handleClick);
+    function handleClick(event) {
+      console.log('target, ', event.target);
+      showRandomProducts();
+    }
   }
 }
 
 showRandomProducts();
-
-productPic.addEventListener('click', handleClick);
-function handleClick(event) {
-  console.log('target, ', event.target);
-  showRandomProducts();
-}
 
 console.log(allProducts);
