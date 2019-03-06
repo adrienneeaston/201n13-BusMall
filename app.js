@@ -18,7 +18,9 @@
 
 'use strict';
 
-var productPic = document.getElementById('productpic');
+var productPicOne = document.getElementById('productpic1');
+var productPicTwo = document.getElementById('productpic2');
+var productPicThree = document.getElementById('productpic3');
 var allProducts = [];
 
 function Products(name, src, alt, title) {
@@ -36,13 +38,22 @@ new Products('breakfast', 'breakfast.jpg', 'breatfast', 'breakfast');
 
 
 function showRandomProducts() {
-  var random = Math.floor(Math.random() * allProducts.length);
-  console.log(random);
-  productPic.src = allProducts[random].filepath;
-  productPic.alt = allProducts[random].name;
-  productPic.title = allProducts[random].name;
-  allProducts[random].views++;
-  console.log('current product, ', allProducts[random]);
+  for(var i = 0; i < 3; i++) {
+    var random = Math.floor(Math.random() * allProducts.length);
+    console.log(random);
+    if (i === 0) {
+      var productPic = productPicOne;
+    } else if (i === 1) {
+      var productPic = productPicTwo;
+    } else {
+      var productPic = productPicThree;
+    }
+    productPic.src = allProducts[random].filepath;
+    productPic.alt = allProducts[random].name;
+    productPic.title = allProducts[random].name;
+    allProducts[random].views++;
+    console.log('current product, ', allProducts[random]);
+  }
 }
 
 showRandomProducts();
