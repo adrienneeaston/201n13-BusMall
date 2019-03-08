@@ -22,6 +22,7 @@ var productPicOne = document.getElementById('productpic1');
 var productPicTwo = document.getElementById('productpic2');
 var productPicThree = document.getElementById('productpic3');
 var allProducts = [];
+var totalRun = 0
 
 // creates constructor
 
@@ -40,12 +41,12 @@ new Products('bathroom', 'bathroom.jpg', 'bathroom', 'bathroom');
 new Products('boots', 'boots.jpg', 'boots', 'boots');
 new Products('breakfast', 'breakfast.jpg', 'breatfast', 'breakfast');
 
-// choosesa nd displays products
+// chooses and displays products
 
 function showRandomProducts() {
+  totalRun++;
   for(var i = 0; i < 3; i++) {
     var random = Math.floor(Math.random() * allProducts.length);
-    console.log(random);
     if (i === 0) {
       var productPic = productPicOne;
     } else if (i === 1) {
@@ -59,14 +60,26 @@ function showRandomProducts() {
     allProducts[random].views++;
     console.log('current product, ', allProducts[random]);
     console.log('-----------');
-    console.log(allProducts[0].views);
-    productPic.addEventListener('click', handleClick);
-    function handleClick(event) {
-      console.log('target, ', event.target);
-      showRandomProducts();
-    }
+    console.log('total views ' + allProducts[0].views);
   }
 }
+
+// event listener/handler
+
+productPicOne.addEventListener('click', handleClick);
+productPicTwo.addEventListener('click', handleClick);
+productPicThree.addEventListener('click', handleClick);
+function handleClick(event) {
+  if (totalRun < 25) {
+    showRandomProducts();
+    console.log('total', totalRun)
+  }
+  else {
+    console.log(totalRun + 'trials completed');
+  }
+}
+
+
 
 showRandomProducts();
 
