@@ -12,7 +12,9 @@ var barChart = new CHART(CHART, {
             backgroundColor: '#00FF00',
             borderColor: '#00FF00',
             borderWidth: 2,
-            data: [5, 2, 8]
+            data: [5, 2, 8] // placeholder numbers
         }
     ]
 });
+
+// need to create arrays for product names and product clicks to use in chart
