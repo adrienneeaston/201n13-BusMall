@@ -26,6 +26,7 @@ function Products(name, filepath, alt, title) {
   this.filepath = filepath;
   this.name = name;
   this.views = 0;
+  this.clicks = 0;
   allProducts.push(this);
 }
 
@@ -60,7 +61,6 @@ productPicThree.addEventListener('click', handleClick);
 // event handler, repeats trial 25 times then stops
 
 function handleClick(event) {
-  var clicks = 0;
   if (totalRun < 25) {
     clicks++;
     showRandomProducts();
@@ -99,3 +99,6 @@ new Products('water-can', 'img/water-can.jpg', 'watering can', 'watering can');
 new Products('wine-glass', 'img/wine-glass.jpg', 'wine glass', 'wine glass');
 
 showRandomProducts();
+
+// can use array.indexOf(arrayItem) === -1, indexOf tells you where teh item is in the array. if it is not in teh array, will return -1
+// need to move my click counter out of listener
