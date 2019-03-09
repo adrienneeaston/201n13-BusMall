@@ -1,7 +1,9 @@
-const CHART = document.getElementBtId("barchart");
+'use strict'
+
+const CHART = document.getElementById("barchart");
 CHART.defaults.scale.ticks.beginAtZero = true;
 
-let barChart = new CHART(CHART, {
+var barChart = new CHART(CHART, {
     type:'bar',
     data: ['Banana', 'breakfast', 'chthuhu'], //etc
     datasets: [
@@ -13,4 +15,4 @@ let barChart = new CHART(CHART, {
             data: [5, 2, 8]
         }
     ]
-}
+});
