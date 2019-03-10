@@ -17,6 +17,7 @@
 var productPicOne = document.getElementById('productpic1');
 var productPicTwo = document.getElementById('productpic2');
 var productPicThree = document.getElementById('productpic3');
+var resultsList = document.getElementById('productlist');
 var allProducts = [];
 var totalRun = 0
 
@@ -52,6 +53,62 @@ function showRandomProducts() {
   }
 }
 
+function clickCounter() {
+  for(var i = 0; i < allProducts.length; i++) {
+    if (event.target.title === allProducts[i].title) {
+    allProducts[i].clicks++;
+    }
+  }
+}
+
+function createTable() {
+  var headerRow = document.createElement('tr');
+  var headerName = document.createElement('td');
+  headerName.innerText = 'Product Name';
+  headerRow.appendChild(headerName);
+
+  var headerViews = document.createElement('td');
+  headerViews.innerText = 'Number of Views';
+  headerRow.appendChild(headerViews);
+
+  var headerClicks = document.createElement('td');
+  headerClicks.innerText = 'Total Clicks';
+  headerRow.appendChild(headerClicks);
+
+  var headerPercentage = document.createElement('td');
+  headerPercentage.innerText = 'Percent Preferred';
+  headerRow.appendChild(headerPercentage);
+
+  table.appendChild(headerRow);
+
+  for (var i = 0; i < allProducts.length; i++) {
+    var productRow = document.createElement('tr');
+    var nameData = document.createElement('td');
+    nameData.innerText = allProducts[i].displayName;
+    productRow.appendChild(nameData);
+
+    var viewsData = document.createElement('td');
+    viewsData.innerText = allProducts[i].views;
+    productRow.appendChild(viewsData);
+
+    var clicksData = document.createElement('td');
+    clicksData.innerText = allProducts[i].clicks;
+    productRow.appendChild(clicksData);
+
+    var percentageData = document.createElement('td');
+    var percentage = (Math.floor((allProducts[i].clicks / allProducts[i].views) * 100));
+    if (isNaN (percentage)) {
+      percentage = 0;
+    }
+    percentageData.innerText = (percentage + '%');
+    productRow.appendChild(percentageData);
+
+    table.appendChild(productRow);
+  }
+}
+
+
+
 // event listener
 
 productPicOne.addEventListener('click', handleClick);
@@ -62,13 +119,13 @@ productPicThree.addEventListener('click', handleClick);
 
 function handleClick(event) {
   if (totalRun < 25) {
-    clicks++;
+    clickCounter();
     showRandomProducts();
-    console.log('total clicks ', clicks);
     console.log('total trials', totalRun)
   }
   else {
     console.log(totalRun + 'trials completed');
+    createTable();
   }
 }
 
