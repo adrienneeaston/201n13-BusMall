@@ -53,13 +53,15 @@ function showRandomProducts() {
   }
 }
 
-function clickCounter() {
-  for(var i = 0; i < allProducts.length; i++) {
-    if (event.target.title === allProducts[i].title) {
-    allProducts[i].clicks++;
-    }
-  }
-}
+// function clickCounter() {
+//   for(var i = 0; i < allProducts.length; i++) {
+//     if (event.target.title === allProducts[i].title) {
+//     allProducts[i].clicks++;
+//     console.log('hello clicks');
+//     break;
+//     }
+//   }
+// }
 
 function createTable() {
   var headerRow = document.createElement('tr');
@@ -119,7 +121,11 @@ productPicThree.addEventListener('click', handleClick);
 
 function handleClick(event) {
   if (totalRun < 25) {
-    clickCounter();
+    // increase counter for clicks
+    // sort if picture is being repeated in display
+    // sort if picture is being repeated from time before
+    // clickCounter();
+    // Products.clicks++;
     showRandomProducts();
     console.log('total trials', totalRun)
   }
@@ -158,4 +164,4 @@ new Products('wine-glass', 'img/wine-glass.jpg', 'wine glass', 'wine glass');
 showRandomProducts();
 
 // can use array.indexOf(arrayItem) === -1, indexOf tells you where teh item is in the array. if it is not in teh array, will return -1
-// need to move my click counter out of listener
+// need to move my click counter out of listener, figure out my click counter
