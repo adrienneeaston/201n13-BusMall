@@ -172,3 +172,22 @@ showRandomProducts();
 
 // can use array.indexOf(arrayItem) === -1, indexOf tells you where teh item is in the array. if it is not in teh array, will return -1
 // need to move my click counter out of listener, figure out my click counter
+
+// Creates local storage
+
+var test = {
+  testProperty1: 1,
+  testProperty2: 2,
+  testProperty3: 3
+};
+
+var testString = JSON.stringify(test);
+
+localStorage.setItem('testKey', testString);
+
+var retrievedData = localStorage.getItem('testKey');
+
+var retrievedDataParsed = JSON.parse(retrievedData);
+
+
+
