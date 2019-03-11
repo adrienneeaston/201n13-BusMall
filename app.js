@@ -19,13 +19,15 @@ var productPicTwo = document.getElementById('productpic2');
 var productPicThree = document.getElementById('productpic3');
 var resultsList = document.getElementById('productlist');
 var allProducts = [];
-var totalRun = 0
+var totalRun = 0;
 
 // creates constructor
 
 function Products(name, filepath, alt, title) {
   this.filepath = filepath;
   this.name = name;
+  this.alt = alt;
+  this.title = title;
   this.views = 0;
   this.clicks = 0;
   allProducts.push(this);
@@ -45,8 +47,8 @@ function showRandomProducts() {
       var productPic = productPicThree;
     }
     productPic.src = allProducts[random].filepath;
-    productPic.alt = allProducts[random].name;
-    productPic.title = allProducts[random].name;
+    productPic.alt = allProducts[random].alt;
+    productPic.title = allProducts[random].title;
     allProducts[random].views++;
     console.log('current product, ', allProducts[random]);
     console.log('total views ' + allProducts[0].views);
@@ -63,7 +65,12 @@ function showRandomProducts() {
 //   }
 // }
 
+// Creates table
+
 function createTable() {
+
+// creates table header
+
   var headerRow = document.createElement('tr');
   var headerName = document.createElement('td');
   headerName.innerText = 'Product Name';
@@ -83,10 +90,12 @@ function createTable() {
 
   table.appendChild(headerRow);
 
+  // Creates the rest of the table data
+
   for (var i = 0; i < allProducts.length; i++) {
     var productRow = document.createElement('tr');
     var nameData = document.createElement('td');
-    nameData.innerText = allProducts[i].displayName;
+    nameData.innerText = allProducts[i].name;
     productRow.appendChild(nameData);
 
     var viewsData = document.createElement('td');
@@ -108,8 +117,6 @@ function createTable() {
     table.appendChild(productRow);
   }
 }
-
-
 
 // event listener
 
